@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import styles from "./MobNumAuth.module.css";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { authentication } from "../../firebase-config";
 
-const MobNumAuth = () => {
+const MobNumAuth = ({ setUserLogin }) => {
 	const countryCode = "+380";
 
 	const [phoneNumber, setPhoneNumber] = useState(countryCode);
@@ -49,6 +50,7 @@ const MobNumAuth = () => {
 				.then((result) => {
 					// User signed in successfully.
 					const user = result.user;
+					setUserLogin(user);
 					console.log(user);
 				})
 				.catch((error) => {
@@ -59,8 +61,8 @@ const MobNumAuth = () => {
 	};
 
 	return (
-		<form onSubmit={reqestOTP}>
-			<div>sign in phone number</div>
+		<form onSubmit={reqestOTP} className={styles.container}>
+			<label className={styles.title}>Sign in phone number</label>
 			<input
 				type="text"
 				placeholder="phone num"
@@ -68,15 +70,15 @@ const MobNumAuth = () => {
 				onChange={(e) => setPhoneNumber(e.target.value)}
 			/>
 			{expandForm === true ? (
-				<div>
-					<div>enter pin in phone</div>
+				<>
+					<label className={styles.pitTitle}>Enter pin from phone</label>
 					<input
 						type="text"
-						placeholder="otp"
+						placeholder="pin"
 						value={OTP}
 						onChange={verifyOTP}
 					/>
-				</div>
+				</>
 			) : (
 				<button>reqest OTP</button>
 			)}

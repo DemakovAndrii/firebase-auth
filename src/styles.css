@@ -1,0 +1,65 @@
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	background-color: black;
+}
+input {
+	font-size: 20px;
+	border-radius: 50px;
+	padding-left: 10px;
+	border: none;
+	text-align: center;
+	font-weight: 400;
+}
+button {
+	color: black;
+	background-color: aliceblue;
+	border: none;
+	height: 26px;
+	border-radius: 50px;
+	font-size: 16px;
+}
+button:hover {
+	background-color: rgb(204, 216, 226);
+}
+img {
+	width: 4rem;
+	border-radius: 50px;
+}
+span {
+	color: aliceblue;
+	font-size: 18px;
+}
+.container {
+	background-color: teal;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	padding: 1rem 2rem 2rem;
+	text-align: center;
+}
+.loginTitle {
+	color: aliceblue;
+	font-size: 24px;
+	margin-top: 0.5rem;
+}
+
+.emailLogContainer {
+	margin: 1rem 0;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.emailLogTextInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	text-align: left;
+}
+
+.phoneLogContainer {
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+}

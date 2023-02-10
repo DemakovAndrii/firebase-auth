@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import styles from "./GoogleAuth.module.css";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { authentication } from "../../firebase-config";
 
-const GoogleAuth = () => {
+const GoogleAuth = ({ setUserLogin }) => {
 	const [activePopup, setActivePopup] = useState(false);
 
 	const provider = new GoogleAuthProvider();
@@ -18,24 +19,22 @@ const GoogleAuth = () => {
 					const token = credential.accessToken;
 					// console.log(token);
 					const user = result.user;
+					setUserLogin(user);
 					console.log(user);
 				})
 				.catch((error) => {
-					// Handle Errors here.
 					const errorCode = error.code;
 					const errorMessage = error.message;
-					// The email of the user's account used.
 					const email = error.customData.email;
-					// The AuthCredential type that was used.
 					const credential = GoogleAuthProvider.credentialFromError(error);
 					console.log(error);
 				});
-			// .finally(setActivePopup(false));
 		}
 	};
 
 	return (
-		<div>
+		<div className={styles.container}>
+			<label className={styles.word}>or</label>
 			<button onClick={popupHandler}>log in with google acc</button>
 		</div>
 	);
