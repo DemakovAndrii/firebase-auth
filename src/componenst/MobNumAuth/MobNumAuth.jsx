@@ -51,6 +51,7 @@ const MobNumAuth = ({ setUserLogin }) => {
 					// User signed in successfully.
 					const user = result.user;
 					setUserLogin(user);
+					localStorage.setItem("key", JSON.stringify(user));
 					console.log(user);
 				})
 				.catch((error) => {

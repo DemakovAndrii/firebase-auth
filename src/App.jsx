@@ -2,13 +2,21 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import MobNumAuth from "./componenst/MobNumAuth/MobNumAuth";
 import GoogleAuth from "./componenst/GoogleAuth/GoogleAuth";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
 	const [userLogin, setUserLogin] = useState(null);
 
+	useEffect(() => {
+		const key = localStorage.getItem("key");
+		if (key !== null) {
+			setUserLogin(JSON.parse(key));
+		}
+	}, []);
+
+	// console.log(userLogin.email);
+
 	if (userLogin !== null) {
-		if (userLogin.email !== null) {
+		if (userLogin.email) {
 			return (
 				<div className="container">
 					<label className="loginTitle">You login with google log</label>
