@@ -6,7 +6,7 @@ import { authentication } from "../../firebase-config";
 const GoogleAuth = ({ setUserLogin }) => {
 	const provider = new GoogleAuthProvider();
 
-	const popupHandler = () => {
+	const authformHandler = () => {
 		signInWithPopup(authentication, provider)
 			.then((result) => {
 				// This gives you a Google Access Token. You can use it to access the Google API.
@@ -16,7 +16,7 @@ const GoogleAuth = ({ setUserLogin }) => {
 				const user = result.user;
 				setUserLogin(user);
 				localStorage.setItem("key", JSON.stringify(user));
-				console.log(user);
+				// console.log(user);
 			})
 			.catch((error) => {
 				const errorCode = error.code;
@@ -29,8 +29,7 @@ const GoogleAuth = ({ setUserLogin }) => {
 
 	return (
 		<div className={styles.container}>
-			<label className={styles.word}>or</label>
-			<button onClick={popupHandler}>log in with google acc</button>
+			<button onClick={authformHandler}>log in with google acc</button>
 		</div>
 	);
 };

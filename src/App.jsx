@@ -13,7 +13,10 @@ export default function App() {
 		}
 	}, []);
 
-	// console.log(userLogin.email);
+	const logoutHandler = () => {
+		setUserLogin(null);
+		localStorage.setItem("key", JSON.stringify(null));
+	};
 
 	if (userLogin !== null) {
 		if (userLogin.email) {
@@ -27,7 +30,7 @@ export default function App() {
 							<span>{userLogin.email}</span>
 						</div>
 					</div>
-					<button onClick={() => setUserLogin(null)}>Log out</button>
+					<button onClick={logoutHandler}>Log out</button>
 				</div>
 			);
 		} else {
@@ -37,7 +40,7 @@ export default function App() {
 						<label className="loginTitle">You login with your phone</label>
 						<label className="loginTitle">{userLogin.phoneNumber}</label>
 					</div>
-					<button onClick={() => setUserLogin(null)}>Log out</button>
+					<button onClick={logoutHandler}>Log out</button>
 				</div>
 			);
 		}
@@ -46,6 +49,7 @@ export default function App() {
 	return (
 		<div className="container">
 			<MobNumAuth setUserLogin={setUserLogin} />
+			<label className="word">or</label>
 			<GoogleAuth setUserLogin={setUserLogin} />
 		</div>
 	);

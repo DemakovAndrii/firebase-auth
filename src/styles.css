@@ -63,3 +63,9 @@ span {
 	display: flex;
 	flex-direction: column;
 }
+
+.word {
+	color: aliceblue;
+	font-size: 22px;
+	text-align: center;
+}
